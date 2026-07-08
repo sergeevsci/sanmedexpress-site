@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <rect width="640" height="480" rx="26" fill="#eef7fb"/>
+  <rect x="144" y="178" width="352" height="74" rx="24" fill="#fff" stroke="#276cae" stroke-width="9"/>
+  <path d="M178 272h284M210 252l-36 72M430 252l36 72" stroke="#df4f64" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="174" cy="332" r="17" fill="#276cae"/><circle cx="466" cy="332" r="17" fill="#276cae"/>
+  <text x="320" y="390" text-anchor="middle" font-family="Arial" font-size="25" font-weight="700" fill="#07365f">Фото носилок</text>
+</svg>

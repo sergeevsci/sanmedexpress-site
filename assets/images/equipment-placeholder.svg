@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <rect width="640" height="480" rx="26" fill="#eef7fb"/>
+  <rect x="184" y="128" width="272" height="206" rx="28" fill="#fff" stroke="#276cae" stroke-width="9"/>
+  <path d="M278 212h84M320 170v84" stroke="#df4f64" stroke-width="18" stroke-linecap="round"/>
+  <path d="M226 334v36M414 334v36" stroke="#276cae" stroke-width="12" stroke-linecap="round"/>
+  <text x="320" y="410" text-anchor="middle" font-family="Arial" font-size="25" font-weight="700" fill="#07365f">Фото оборудования</text>
+</svg>

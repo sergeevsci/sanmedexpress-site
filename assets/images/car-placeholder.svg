@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <rect width="640" height="480" rx="26" fill="#eef7fb"/>
+  <path d="M108 295h424l-28-82c-8-22-29-37-53-37H238c-23 0-43 13-53 34l-30 63h-47v22Z" fill="#fff" stroke="#276cae" stroke-width="9"/>
+  <circle cx="208" cy="303" r="35" fill="#276cae"/><circle cx="456" cy="303" r="35" fill="#276cae"/>
+  <text x="320" y="390" text-anchor="middle" font-family="Arial" font-size="25" font-weight="700" fill="#07365f">Фото автомобиля</text>
+</svg>
