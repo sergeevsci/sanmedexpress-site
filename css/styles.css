@@ -19,6 +19,54 @@ body { margin: 0; color: var(--color-text); font-family: Inter, "Segoe UI", Aria
 img { max-width: 100%; display: block; }
 a { text-decoration: none; }
 
+/* Fallback for opening the page directly if Bootstrap CDN is blocked or slow. */
+.container { width: min(1180px, calc(100% - 32px)); margin-inline: auto; }
+.row { display: flex; flex-wrap: wrap; margin-inline: -12px; }
+.row > * { padding-inline: 12px; width: 100%; }
+.g-3 { row-gap: 16px; }
+.g-4 { row-gap: 24px; }
+.g-5 { row-gap: 36px; }
+.align-items-center { align-items: center; }
+.align-items-stretch { align-items: stretch; }
+.align-items-start { align-items: flex-start; }
+.navbar-nav { display: flex; flex-wrap: wrap; gap: 18px; padding-left: 0; margin: 0; list-style: none; }
+.navbar .container { display: flex; align-items: center; gap: 22px; }
+.mx-auto { margin-inline: auto; }
+.w-100 { width: 100%; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; border-radius: 999px; }
+.btn-lg { min-height: 54px; padding: 14px 24px; }
+.btn-sm { min-height: 38px; padding: 8px 14px; }
+.form-control { display: block; width: 100%; }
+
+@media (min-width: 576px) {
+  .col-sm-6 { width: 50%; }
+}
+
+@media (min-width: 768px) {
+  .col-md-6 { width: 50%; }
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse { display: flex !important; align-items: center; flex-grow: 1; }
+  .col-lg-3 { width: 25%; }
+  .col-lg-4 { width: 33.333333%; }
+  .col-lg-5 { width: 41.666667%; }
+  .col-lg-6 { width: 50%; }
+  .col-lg-7 { width: 58.333333%; }
+  .col-lg-8 { width: 66.666667%; }
+}
+
+@media (max-width: 991px) {
+  .navbar .container { flex-wrap: wrap; }
+  .navbar-collapse.collapse:not(.show) { display: none; }
+  .navbar-collapse { width: 100%; }
+  .navbar-nav { display: grid; gap: 8px; margin: 16px 0; }
+}
+
+@media (min-width: 1200px) {
+  .col-xl-3 { width: 25%; }
+}
+
 .site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(217, 232, 242, 0.9); background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); }
 .navbar { min-height: 82px; }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--color-text); }
