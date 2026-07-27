@@ -71,7 +71,11 @@ a { text-decoration: none; }
 .navbar { min-height: 82px; }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--color-text); }
 .brand:hover { color: var(--color-text); }
-.brand-mark { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--color-accent); font-size: 34px; font-weight: 900; line-height: 1; box-shadow: 0 0 0 5px #fff, 0 10px 24px rgba(223, 79, 100, 0.25); }
+.brand-mark { position: relative; width: 48px; height: 48px; flex: 0 0 48px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 5px #fff, 0 10px 24px rgba(223, 79, 100, 0.25); }
+.brand-mark::before,
+.brand-mark::after { content: ""; position: absolute; left: 50%; top: 50%; border-radius: 2px; background: #fff; transform: translate(-50%, -50%); }
+.brand-mark::before { width: 23px; height: 7px; }
+.brand-mark::after { width: 7px; height: 23px; }
 .brand-text strong { display: block; color: var(--color-accent); font-size: 22px; letter-spacing: 0.01em; text-transform: uppercase; }
 .brand-text small { display: block; color: var(--color-muted); font-size: 13px; }
 .nav-link { color: var(--color-muted); font-weight: 700; }
