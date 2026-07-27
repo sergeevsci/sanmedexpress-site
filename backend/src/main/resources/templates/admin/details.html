@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="'Заявка #' + ${order.id}">Заявка</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<main class="page narrow">
+  <a href="/admin" class="link">← Все заявки</a>
+  <section class="card details">
+    <h1 th:text="'Заявка #' + ${order.id}">Заявка</h1>
+    <dl>
+      <dt>Дата</dt><dd th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}"></dd>
+      <dt>Имя</dt><dd th:text="${order.client.name}"></dd>
+      <dt>Телефон</dt><dd><a th:href="'tel:' + ${order.client.phone}" th:text="${order.client.phone}"></a></dd>
+      <dt>Комментарий</dt><dd th:text="${order.comment ?: '-'}"></dd>
+      <dt>Источник</dt><dd th:text="${order.source}"></dd>
+      <dt>IP</dt><dd th:text="${order.ipAddress ?: '-'}"></dd>
+      <dt>User-Agent</dt><dd th:text="${order.userAgent ?: '-'}"></dd>
+    </dl>
+    <form method="post" th:action="@{/admin/{id}/status(id=${order.id})}" class="status-form">
+      <label>Статус</label>
+      <select name="status">
+        <option th:each="status : ${statuses}" th:value="${status}" th:text="${status.title}" th:selected="${status == order.status}"></option>
+      </select>
+      <button type="submit">Сохранить</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

@@ -19,6 +19,60 @@
 
 На GitHub в обычном репозитории открывается `README.md`, а не сайт. Чтобы сайт был доступен по ссылке, включите GitHub Pages: `Settings` -> `Pages` -> `Deploy from a branch` -> ветка `main` -> папка `/root`.
 
+## Backend и Docker
+
+В проект добавлен backend на Spring Boot, PostgreSQL и простая админка заявок.
+
+Запуск через Docker Compose:
+
+```bash
+cp .env.example .env
+docker compose up -d --build
+```
+
+После запуска:
+
+- сайт: `http://SERVER_IP/`
+- API формы: `POST /api/requests`
+- админка: `http://SERVER_IP/admin/`
+
+Логин и пароль админки задаются в `.env`:
+
+```env
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=change-me-admin-password
+```
+
+Пароль базы тоже обязательно поменять в `.env`:
+
+```env
+POSTGRES_PASSWORD=change-me-db-password
+```
+
+## Email
+
+Заявки могут отправляться на email. Пока отправка выключена:
+
+```env
+EMAIL_ENABLED=false
+EMAIL_TO=sergeevsci@yandex.ru
+```
+
+Когда появится почта-отправитель, включить и заполнить SMTP:
+
+```env
+EMAIL_ENABLED=true
+EMAIL_FROM=site@your-domain.ru
+MAIL_HOST=smtp.example.com
+MAIL_PORT=587
+MAIL_USERNAME=site@your-domain.ru
+MAIL_PASSWORD=mail-password
+MAIL_SMTP_AUTH=true
+MAIL_SMTP_STARTTLS=true
+```
+
+Почту-отправитель обычно делают через Яндекс 360, VK WorkMail, reg.ru, timeweb или почту хостинга. Для доменной почты нужно будет подтвердить домен и настроить DNS-записи по инструкции сервиса.
+
 ## Что заменить позже
 
 - Номера автомобилей на подключенных фото в `images`.

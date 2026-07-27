@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заявки - СанМедЭкспресс</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <div>
+      <h1>Заявки</h1>
+      <p>За последние 24 часа: <b th:text="${todayCount}">0</b></p>
+    </div>
+    <a href="/" class="link">На сайт</a>
+  </header>
+
+  <form class="filter" method="get" action="/admin">
+    <label>Статус</label>
+    <select name="status">
+      <option value="">Все</option>
+      <option th:each="status : ${statuses}" th:value="${status}" th:text="${status.title}" th:selected="${status == selectedStatus}"></option>
+    </select>
+    <button type="submit">Показать</button>
+  </form>
+
+  <section class="card">
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Дата</th>
+        <th>Клиент</th>
+        <th>Телефон</th>
+        <th>Статус</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="order : ${orders}">
+        <td th:text="${order.id}">1</td>
+        <td th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}">27.07.2026 12:00</td>
+        <td th:text="${order.client.name}">Имя</td>
+        <td><a th:href="'tel:' + ${order.client.phone}" th:text="${order.client.phone}">+7</a></td>
+        <td><span class="status" th:text="${order.status.title}">Новая</span></td>
+        <td><a th:href="@{/admin/{id}(id=${order.id})}">Открыть</a></td>
+      </tr>
+      <tr th:if="${#lists.isEmpty(orders)}">
+        <td colspan="6" class="empty">Заявок пока нет</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

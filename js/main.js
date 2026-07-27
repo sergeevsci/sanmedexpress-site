@@ -9,7 +9,7 @@ if (scrollToFormButton && form) {
 }
 
 if (form) {
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const name = form.elements.name;
@@ -37,13 +37,33 @@ if (form) {
       name: name.value.trim(),
       phone: phone.value.trim(),
       comment: form.elements.comment.value.trim(),
-      createdAt: new Date().toISOString(),
     };
 
-    console.info('Prepared request:', preparedRequest);
-    form.reset();
-    formMessage.textContent = 'Спасибо! Заявка подготовлена. Для срочного заказа позвоните по телефону +7 905 769-03-03.';
-    formMessage.className = 'form-message success';
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправляем...';
+
+    try {
+      const response = await fetch('/api/requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(preparedRequest),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      form.reset();
+      formMessage.textContent = 'Спасибо! Заявка принята. Мы свяжемся с вами по указанному телефону.';
+      formMessage.className = 'form-message success';
+    } catch (error) {
+      formMessage.textContent = 'Не удалось отправить заявку. Пожалуйста, позвоните по телефону +7 905 769-03-03.';
+      formMessage.className = 'form-message error';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Отправить заявку';
+    }
   });
 
   form.addEventListener('input', (event) => {
