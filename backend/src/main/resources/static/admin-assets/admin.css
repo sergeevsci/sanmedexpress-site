@@ -49,6 +49,8 @@ tr:last-child td { border-bottom: 0; }
 .comment-cell { max-width: 280px; color: #64748b; }
 .copy-btn { min-height: 32px; padding: 5px 9px; border-color: #d9e8f2; color: #12346f; background: #f8fafc; font-size: 13px; font-weight: 800; }
 .copy-btn.copied { color: #166534; background: #dcfce7; }
+.copy-toast { position: fixed; right: 24px; bottom: 24px; z-index: 20; padding: 12px 16px; border-radius: 14px; color: #fff; background: #12346f; box-shadow: 0 12px 34px rgba(24, 63, 105, .2); font-weight: 800; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
+.copy-toast.visible { opacity: 1; transform: translateY(0); }
 .empty { color: #64748b; text-align: center; }
 .back-link { display: inline-flex; margin-bottom: 14px; }
 .details { padding: 30px; margin-top: 0; }

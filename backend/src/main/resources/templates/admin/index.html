@@ -55,7 +55,7 @@
       <tbody>
       <tr th:each="order : ${orders}">
         <td th:text="${order.id}">1</td>
-        <td th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}">27.07.2026 12:00</td>
+        <td th:text="${#temporals.format(order.createdAt.atZoneSameInstant(moscowZone), 'dd.MM.yyyy HH:mm') + ' МСК'}">27.07.2026 23:00 МСК</td>
         <td th:text="${order.client.name}">Имя</td>
         <td class="phone-cell"><a th:href="'tel:' + ${order.client.phone}" th:text="${order.client.phone}">+7</a><button type="button" class="copy-btn" th:attr="data-copy=${order.client.phone}">Копировать</button></td>
         <td><span th:class="'status status-' + ${order.status.name().toLowerCase()}" th:text="${order.status.title}">Новая</span></td>

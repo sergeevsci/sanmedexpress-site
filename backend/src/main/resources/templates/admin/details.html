@@ -13,7 +13,7 @@
     <div class="details-head">
       <div>
         <h1 th:text="'Заявка #' + ${order.id}">Заявка</h1>
-        <p th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}"></p>
+        <p th:text="${#temporals.format(order.createdAt.atZoneSameInstant(moscowZone), 'dd.MM.yyyy HH:mm') + ' МСК'}"></p>
       </div>
       <button type="button" class="copy-btn primary-copy" th:attr="data-copy='Заявка #' + ${order.id} + '\nИмя: ' + ${order.client.name} + '\nТелефон: ' + ${order.client.phone} + '\nКомментарий: ' + (${order.comment} ?: '-')">Копировать заявку</button>
     </div>

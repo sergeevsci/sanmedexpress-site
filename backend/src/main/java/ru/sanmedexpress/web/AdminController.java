@@ -16,6 +16,7 @@ import ru.sanmedexpress.repository.OrderRequestRepository;
 import ru.sanmedexpress.service.OrderService;
 
 import java.nio.charset.StandardCharsets;
+import java.time.ZoneId;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -23,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+    private static final ZoneId MOSCOW_ZONE = ZoneId.of("Europe/Moscow");
+
     private final OrderRequestRepository orderRequestRepository;
     private final OrderService orderService;
 
@@ -41,6 +44,7 @@ public class AdminController {
         model.addAttribute("todayCount", orderRequestRepository.countByCreatedAtAfter(OffsetDateTime.now().minusDays(1)));
         model.addAttribute("totalCount", orderRequestRepository.count());
         model.addAttribute("newCount", orderRequestRepository.findAllByStatus(OrderStatus.NEW, sort).size());
+        model.addAttribute("moscowZone", MOSCOW_ZONE);
         return "admin/index";
     }
 
@@ -61,6 +65,7 @@ public class AdminController {
         var order = orderRequestRepository.findById(id).orElseThrow();
         model.addAttribute("order", order);
         model.addAttribute("statuses", OrderStatus.values());
+        model.addAttribute("moscowZone", MOSCOW_ZONE);
         return "admin/details";
     }
 
@@ -73,10 +78,10 @@ public class AdminController {
     private String buildCsv(List<ru.sanmedexpress.domain.OrderRequest> orders) {
         var formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         var builder = new StringBuilder("\uFEFF");
-        builder.append("ID;Дата;Имя;Телефон;Статус;Комментарий;Источник;IP\n");
+        builder.append("ID;Дата МСК;Имя;Телефон;Статус;Комментарий;Источник;IP\n");
         for (var order : orders) {
             builder.append(order.getId()).append(';')
-                    .append(escape(order.getCreatedAt().format(formatter))).append(';')
+                    .append(escape(order.getCreatedAt().atZoneSameInstant(MOSCOW_ZONE).format(formatter) + " МСК")).append(';')
                     .append(escape(order.getClient().getName())).append(';')
                     .append(escape(order.getClient().getPhone())).append(';')
                     .append(escape(order.getStatus().getTitle())).append(';')
