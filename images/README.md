@@ -4,13 +4,15 @@
 
 ## Лучшие кандидаты для сайта
 
-- `vehicle-exterior-front-01.jpeg` - главный кандидат для первого экрана после замазывания номера.
-- `vehicle-exterior-two-cars-05.jpeg`, `vehicle-exterior-two-cars-06.jpeg`, `vehicle-exterior-two-cars-07.jpeg` - фото автопарка.
-- `vehicle-rear-open-interior-01.jpeg`, `vehicle-rear-open-interior-02.jpeg` - открытые двери и салон.
-- `vehicle-interior-wide-02.jpeg`, `vehicle-interior-wide-03.jpeg`, `vehicle-interior-wide-04.jpeg`, `vehicle-interior-wide-05.jpeg` - салон и оснащение.
-- `equipment-wheelchairs-outside-01.jpeg` - кресла и оборудование на улице.
-- `equipment-stretcher-outside-01.jpeg` - носилки/каталка.
-- `stretcher-loading-empty-01.jpeg` - процесс подготовки без пациента.
+- `vehicle-exterior-front-01-used.jpeg` - главный кадр первого экрана после замазывания номера.
+- `vehicle-exterior-two-cars-05-used.jpeg`, `vehicle-exterior-two-cars-07-used.jpeg` - фото автопарка, уже используются на сайте.
+- `vehicle-rear-open-interior-02-used.jpeg` - открытые двери и салон, уже используется на сайте.
+- `vehicle-interior-wide-02-used.jpeg`, `vehicle-interior-wide-03-used.jpeg`, `vehicle-interior-wide-04-used.jpeg` - салон и оснащение, уже используются на сайте.
+- `equipment-wheelchairs-outside-01-used.jpeg` - кресла и оборудование на улице, уже используется на сайте.
+- `equipment-stretcher-outside-01-used.jpeg` - носилки/каталка, уже используется на сайте.
+- `stretcher-loading-empty-01-used.jpeg` - процесс подготовки без пациента, уже используется на сайте.
+- `crew-loading-stretcher-01-used.jpeg` - работа бригады, уже используется на сайте.
+- `crew-home-stretcher-transfer-01-used.jpg` - доставка пациента, уже используется на сайте.
 
 ## Использовать осторожно
 
