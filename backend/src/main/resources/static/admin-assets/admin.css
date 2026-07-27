@@ -63,7 +63,8 @@ tr:last-child td { border-bottom: 0; }
 .status-in_progress { color: #075985; background: #e0f2fe; }
 .status-done { color: #166534; background: #dcfce7; }
 .status-cancelled { color: #475569; background: #e2e8f0; }
-.phone-cell, .row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.phone-cell, .row-actions { white-space: nowrap; }
+.phone-cell .copy-btn, .row-actions .copy-btn, .row-actions .button { margin-left: 8px; }
 .comment-cell { max-width: 280px; color: #64748b; }
 .copy-btn { min-height: 32px; padding: 5px 9px; border-color: #d9e8f2; color: #12346f; background: #f8fafc; font-size: 13px; font-weight: 800; }
 .copy-btn.copied { color: #166534; background: #dcfce7; }
