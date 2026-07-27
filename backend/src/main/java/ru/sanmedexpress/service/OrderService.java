@@ -47,6 +47,16 @@ public class OrderService {
     }
 
     private String normalizePhone(String phone) {
+        var digits = phone.replaceAll("\\D+", "");
+        if (digits.length() == 11 && digits.startsWith("8")) {
+            return "+7" + digits.substring(1);
+        }
+        if (digits.length() == 11 && digits.startsWith("7")) {
+            return "+" + digits;
+        }
+        if (digits.length() == 10) {
+            return "+7" + digits;
+        }
         return phone.trim().replaceAll("\\s+", " ");
     }
 

@@ -18,13 +18,9 @@
       <button type="button" class="copy-btn primary-copy" th:attr="data-copy='Заявка #' + ${order.id} + '\nИмя: ' + ${order.client.name} + '\nТелефон: ' + ${order.client.phone} + '\nКомментарий: ' + (${order.comment} ?: '-')">Копировать заявку</button>
     </div>
     <dl>
-      <dt>Дата</dt><dd th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}"></dd>
       <dt>Имя</dt><dd th:text="${order.client.name}"></dd>
       <dt>Телефон</dt><dd><a th:href="'tel:' + ${order.client.phone}" th:text="${order.client.phone}"></a> <button type="button" class="copy-btn" th:attr="data-copy=${order.client.phone}">Копировать</button></dd>
       <dt>Комментарий</dt><dd th:text="${order.comment ?: '-'}"></dd>
-      <dt>Источник</dt><dd th:text="${order.source}"></dd>
-      <dt>IP</dt><dd th:text="${order.ipAddress ?: '-'}"></dd>
-      <dt>User-Agent</dt><dd th:text="${order.userAgent ?: '-'}"></dd>
     </dl>
     <form method="post" th:action="@{/admin/{id}/status(id=${order.id})}" class="status-form">
       <label>Статус</label>
