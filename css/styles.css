@@ -145,19 +145,22 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
 .price-cta h3 { color: #fff; }
 .price-cta p { color: rgba(255,255,255,0.78); }
 
-.fleet-section { background: #092c57; }
+.fleet-section { background: #0b355f; }
 .light-title h2, .light-title p { color: #fff; }
 .light-title p { opacity: .72; }
-.gallery-card { position: relative; height: 100%; overflow: hidden; margin: 0; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
-.gallery-card img { width: 100%; height: 250px; object-fit: cover; background: var(--color-ice); }
-.gallery-card.big img { height: 520px; }
-.gallery-card figcaption { position: absolute; left: 16px; right: 16px; bottom: 16px; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,0.93); }
-.gallery-card b, .gallery-card span { display: block; }
-.gallery-card b { color: var(--color-primary-dark); }
-.gallery-card span { color: var(--color-muted); }
-.photo-brief { height: 100%; padding: 30px; border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); color: #fff; background: rgba(255,255,255,0.08); }
-.photo-brief h3 { color: #fff; }
-.photo-brief li { margin-bottom: 8px; color: rgba(255,255,255,0.78); }
+.fleet-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.fleet-card { overflow: hidden; margin: 0; border-radius: 22px; background: #f8fafc; box-shadow: 0 8px 30px rgba(0, 0, 0, .08); }
+.fleet-card img { width: 100%; height: 260px; object-fit: cover; background: #f7f9fc; }
+.fleet-card figcaption { padding: 22px 24px 24px; }
+.fleet-card b, .fleet-card span { display: block; }
+.fleet-card b { margin-bottom: 8px; color: var(--color-primary-dark); font-size: 18px; font-weight: 600; line-height: 1.25; }
+.fleet-card span { color: #64748b; font-size: 15.5px; font-weight: 400; line-height: 1.6; }
+.patient-transfer-card { position: relative; overflow: hidden; margin: 28px 0 0; border-radius: 24px; background: #f8fafc; box-shadow: 0 8px 30px rgba(0, 0, 0, .08); }
+.patient-transfer-card img { width: 100%; height: 520px; object-fit: cover; object-position: center; }
+.patient-transfer-card figcaption { position: absolute; left: 24px; right: 24px; bottom: 24px; max-width: 560px; padding: 24px 26px; border-radius: 22px; background: rgba(248, 250, 252, .94); backdrop-filter: blur(10px); }
+.patient-transfer-card b, .patient-transfer-card span { display: block; }
+.patient-transfer-card b { margin-bottom: 8px; color: var(--color-primary-dark); font-size: 22px; font-weight: 600; line-height: 1.25; }
+.patient-transfer-card span { color: #64748b; font-size: 16px; font-weight: 400; line-height: 1.6; }
 
 .timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .timeline-item { position: relative; padding: 28px; border: 1px solid var(--color-line); border-radius: var(--radius); background: #fff; box-shadow: 0 14px 38px rgba(24, 63, 105, 0.09); }
@@ -206,6 +209,7 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
   .header-contact { align-items: flex-start; flex-direction: column; }
   .hero-visual { min-height: 620px; }
   .hero-photo-main { left: 0; }
+  .fleet-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .benefit-grid, .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -227,7 +231,10 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
   .benefit-grid, .timeline { grid-template-columns: 1fr; }
   .price-row { grid-template-columns: 1fr; gap: 4px; padding: 18px; }
   .price-row strong { text-align: left; }
-  .gallery-card.big img, .gallery-card img { height: 260px; }
+  .fleet-cards { grid-template-columns: 1fr; }
+  .fleet-card img { height: 240px; }
+  .patient-transfer-card img { height: 420px; }
+  .patient-transfer-card figcaption { left: 14px; right: 14px; bottom: 14px; padding: 18px; }
   .review-box { display: block; }
   .review-box .btn { margin-top: 18px; width: 100%; }
   .contact-phone { font-size: 28px; }
