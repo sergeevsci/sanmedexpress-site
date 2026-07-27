@@ -8,25 +8,39 @@
 </head>
 <body>
 <main class="page">
-  <header class="topbar">
+  <header class="topbar hero-admin">
     <div>
       <h1>Заявки</h1>
-      <p>За последние 24 часа: <b th:text="${todayCount}">0</b></p>
+      <p>Панель обработки обращений с сайта СанМедЭкспресс</p>
     </div>
-    <a href="/" class="link">На сайт</a>
+    <div class="top-actions">
+      <a href="/admin/export.csv" class="button secondary">Выгрузить CSV</a>
+      <a href="/" class="button ghost">На сайт</a>
+    </div>
   </header>
 
-  <form class="filter" method="get" action="/admin">
-    <label>Статус</label>
-    <select name="status">
-      <option value="">Все</option>
-      <option th:each="status : ${statuses}" th:value="${status}" th:text="${status.title}" th:selected="${status == selectedStatus}"></option>
-    </select>
-    <button type="submit">Показать</button>
-  </form>
+  <section class="stats-grid">
+    <article class="stat-card"><span>Всего заявок</span><b th:text="${totalCount}">0</b></article>
+    <article class="stat-card accent"><span>Новые</span><b th:text="${newCount}">0</b></article>
+    <article class="stat-card"><span>За 24 часа</span><b th:text="${todayCount}">0</b></article>
+  </section>
+
+  <section class="toolbar card soft-card">
+    <form class="filter" method="get" action="/admin">
+      <label>Фильтр по статусу</label>
+      <select name="status">
+        <option value="">Все заявки</option>
+        <option th:each="status : ${statuses}" th:value="${status}" th:text="${status.title}" th:selected="${status == selectedStatus}"></option>
+      </select>
+      <button type="submit">Применить</button>
+    </form>
+    <a th:if="${selectedStatus == null}" href="/admin/export.csv" class="button">Скачать для Excel</a>
+    <a th:if="${selectedStatus != null}" th:href="@{/admin/export.csv(status=${selectedStatus})}" class="button">Скачать для Excel</a>
+  </section>
 
   <section class="card">
-    <table>
+    <div class="table-wrap">
+    <table class="orders-table">
       <thead>
       <tr>
         <th>ID</th>
@@ -34,6 +48,7 @@
         <th>Клиент</th>
         <th>Телефон</th>
         <th>Статус</th>
+        <th>Комментарий</th>
         <th></th>
       </tr>
       </thead>
@@ -42,16 +57,19 @@
         <td th:text="${order.id}">1</td>
         <td th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}">27.07.2026 12:00</td>
         <td th:text="${order.client.name}">Имя</td>
-        <td><a th:href="'tel:' + ${order.client.phone}" th:text="${order.client.phone}">+7</a></td>
-        <td><span class="status" th:text="${order.status.title}">Новая</span></td>
-        <td><a th:href="@{/admin/{id}(id=${order.id})}">Открыть</a></td>
+        <td class="phone-cell"><a th:href="'tel:' + ${order.client.phone}" th:text="${order.client.phone}">+7</a><button type="button" class="copy-btn" th:attr="data-copy=${order.client.phone}">Копировать</button></td>
+        <td><span th:class="'status status-' + ${order.status.name().toLowerCase()}" th:text="${order.status.title}">Новая</span></td>
+        <td class="comment-cell" th:text="${order.comment ?: '-'}">Комментарий</td>
+        <td class="row-actions"><button type="button" class="copy-btn" th:attr="data-copy='Заявка #' + ${order.id} + '\nИмя: ' + ${order.client.name} + '\nТелефон: ' + ${order.client.phone} + '\nКомментарий: ' + (${order.comment} ?: '-')">Копировать заявку</button><a th:href="@{/admin/{id}(id=${order.id})}" class="button small">Открыть</a></td>
       </tr>
       <tr th:if="${#lists.isEmpty(orders)}">
-        <td colspan="6" class="empty">Заявок пока нет</td>
+        <td colspan="7" class="empty">Заявок пока нет</td>
       </tr>
       </tbody>
     </table>
+    </div>
   </section>
 </main>
+<script src="/admin/admin.js"></script>
 </body>
 </html>
