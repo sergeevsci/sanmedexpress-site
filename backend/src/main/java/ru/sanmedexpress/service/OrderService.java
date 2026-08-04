@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import ru.sanmedexpress.domain.Client;
 import ru.sanmedexpress.domain.OrderRequest;
 import ru.sanmedexpress.domain.OrderStatus;
@@ -41,8 +43,21 @@ public class OrderService {
         var order = new OrderRequest(client, cleanComment(request.comment()), getIp(servletRequest), servletRequest.getHeader("User-Agent"));
         var saved = orderRequestRepository.save(order);
         log.info("Created order request id={} clientId={} phone={} source={} ip={}", saved.getId(), client.getId(), client.getPhone(), saved.getSource(), saved.getIpAddress());
-        notificationService.sendNewOrderNotifications(saved);
+        sendNotificationsAfterCommit(saved);
         return saved;
+    }
+
+    private void sendNotificationsAfterCommit(OrderRequest order) {
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+            @Override
+            public void afterCommit() {
+                try {
+                    notificationService.sendNewOrderNotifications(order);
+                } catch (Exception exception) {
+                    log.warn("Cannot schedule notifications for order id={}", order.getId(), exception);
+                }
+            }
+        });
     }
 
     @Transactional

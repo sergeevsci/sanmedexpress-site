@@ -16,7 +16,7 @@ class NotificationServiceTest {
         var order = order();
         doThrow(new RuntimeException("SMTP is down")).when(emailService).sendNewOrder(order);
 
-        new NotificationService(emailService, telegramService).sendNewOrderNotifications(order);
+        new NotificationService(emailService, telegramService, Runnable::run).sendNewOrderNotifications(order);
 
         verify(emailService).sendNewOrder(order);
         verify(telegramService).sendNewOrder(order);
@@ -29,7 +29,7 @@ class NotificationServiceTest {
         var order = order();
         doThrow(new RuntimeException("Telegram is down")).when(telegramService).sendNewOrder(order);
 
-        new NotificationService(emailService, telegramService).sendNewOrderNotifications(order);
+        new NotificationService(emailService, telegramService, Runnable::run).sendNewOrderNotifications(order);
 
         verify(emailService).sendNewOrder(order);
         verify(telegramService).sendNewOrder(order);

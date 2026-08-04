@@ -104,6 +104,8 @@ LOG_LEVEL_MAIL=INFO
 
 Telegram-уведомления являются дополнительным каналом. Email продолжает работать независимо: ошибка Telegram не мешает сохранению заявки и отправке email.
 
+Email и Telegram отправляются в фоне после сохранения заявки. HTTP-ответ клиенту возвращается независимо от SMTP и Telegram: если SMTP недоступен или висит, пользователь сайта не ждет отправку письма.
+
 Email и Telegram вызываются через отдельные независимые `try/catch`: если SMTP недоступен, Telegram все равно будет отправлен; если Telegram недоступен, email все равно будет отправлен.
 
 Как подключить:
@@ -121,6 +123,14 @@ Email и Telegram вызываются через отдельные незав�
 TELEGRAM_ENABLED=false
 TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=
+```
+
+SMTP-таймауты по умолчанию: 5 секунд на connect/read/write. Их можно изменить через `.env`:
+
+```env
+MAIL_SMTP_CONNECTION_TIMEOUT=5000
+MAIL_SMTP_READ_TIMEOUT=5000
+MAIL_SMTP_WRITE_TIMEOUT=5000
 ```
 
 Когда token и chat_id готовы:

@@ -24,6 +24,7 @@ Spring Boot backend для заявок с сайта.
 - `EMAIL_FROM` - почта отправителя.
 - `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD` - SMTP отправителя.
 - `MAIL_SMTP_AUTH`, `MAIL_SMTP_STARTTLS` - настройки SMTP.
+- `MAIL_SMTP_CONNECTION_TIMEOUT`, `MAIL_SMTP_READ_TIMEOUT`, `MAIL_SMTP_WRITE_TIMEOUT` - таймауты SMTP в миллисекундах.
 - `TELEGRAM_ENABLED` - `true` или `false`, включает Telegram-уведомления.
 - `TELEGRAM_BOT_TOKEN` - токен бота от `@BotFather`.
 - `TELEGRAM_CHAT_ID` - ID чата, куда отправлять заявки.
