@@ -84,6 +84,7 @@ Backend пишет в `docker logs` события по заявкам и email:
 - попытка отправки email;
 - успешная отправка email;
 - ошибка SMTP с причиной.
+- неожиданные ошибки отдельных каналов уведомлений без остановки второго канала.
 
 Смотреть логи:
 
@@ -98,6 +99,39 @@ LOG_LEVEL_ROOT=INFO
 LOG_LEVEL_APP=INFO
 LOG_LEVEL_MAIL=INFO
 ```
+
+## Telegram notifications
+
+Telegram-уведомления являются дополнительным каналом. Email продолжает работать независимо: ошибка Telegram не мешает сохранению заявки и отправке email.
+
+Email и Telegram вызываются через отдельные независимые `try/catch`: если SMTP недоступен, Telegram все равно будет отправлен; если Telegram недоступен, email все равно будет отправлен.
+
+Как подключить:
+
+1. В Telegram открыть `@BotFather`.
+2. Создать бота командой `/newbot`.
+3. Скопировать token бота.
+4. Добавить бота в нужный чат или написать ему лично.
+5. Получить `chat_id`. Самый простой способ: временно открыть в браузере `https://api.telegram.org/botTOKEN/getUpdates` после сообщения боту/в чат и найти поле `chat.id`.
+6. Заполнить `.env` на сервере.
+
+Переменные `.env`:
+
+```env
+TELEGRAM_ENABLED=false
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+```
+
+Когда token и chat_id готовы:
+
+```env
+TELEGRAM_ENABLED=true
+TELEGRAM_BOT_TOKEN=ваш_токен
+TELEGRAM_CHAT_ID=ваш_chat_id
+```
+
+Не добавляйте реальные token и chat_id в Git. Они должны быть только в `.env` на сервере.
 
 ## Что заменить позже
 

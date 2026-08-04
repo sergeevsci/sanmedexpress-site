@@ -10,6 +10,7 @@ Spring Boot backend для заявок с сайта.
 - `/admin/` - простая админка заявок.
 - Basic Auth для админки.
 - Email-уведомление о новой заявке, включается через переменные окружения.
+- Telegram-уведомление о новой заявке, включается через переменные окружения.
 
 ## Переменные окружения
 
@@ -23,6 +24,9 @@ Spring Boot backend для заявок с сайта.
 - `EMAIL_FROM` - почта отправителя.
 - `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD` - SMTP отправителя.
 - `MAIL_SMTP_AUTH`, `MAIL_SMTP_STARTTLS` - настройки SMTP.
+- `TELEGRAM_ENABLED` - `true` или `false`, включает Telegram-уведомления.
+- `TELEGRAM_BOT_TOKEN` - токен бота от `@BotFather`.
+- `TELEGRAM_CHAT_ID` - ID чата, куда отправлять заявки.
 
 ## Где менять email получателя
 

@@ -18,12 +18,12 @@ public class OrderService {
 
     private final ClientRepository clientRepository;
     private final OrderRequestRepository orderRequestRepository;
-    private final ReportEmailService reportEmailService;
+    private final NotificationService notificationService;
 
-    public OrderService(ClientRepository clientRepository, OrderRequestRepository orderRequestRepository, ReportEmailService reportEmailService) {
+    public OrderService(ClientRepository clientRepository, OrderRequestRepository orderRequestRepository, NotificationService notificationService) {
         this.clientRepository = clientRepository;
         this.orderRequestRepository = orderRequestRepository;
-        this.reportEmailService = reportEmailService;
+        this.notificationService = notificationService;
     }
 
     @Transactional
@@ -41,7 +41,7 @@ public class OrderService {
         var order = new OrderRequest(client, cleanComment(request.comment()), getIp(servletRequest), servletRequest.getHeader("User-Agent"));
         var saved = orderRequestRepository.save(order);
         log.info("Created order request id={} clientId={} phone={} source={} ip={}", saved.getId(), client.getId(), client.getPhone(), saved.getSource(), saved.getIpAddress());
-        reportEmailService.sendNewOrder(saved);
+        notificationService.sendNewOrderNotifications(saved);
         return saved;
     }
 

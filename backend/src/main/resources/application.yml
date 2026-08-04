@@ -25,6 +25,10 @@ app:
     enabled: ${EMAIL_ENABLED:false}
     to: ${EMAIL_TO:}
     from: ${EMAIL_FROM:}
+  telegram:
+    enabled: ${TELEGRAM_ENABLED:false}
+    bot-token: ${TELEGRAM_BOT_TOKEN:}
+    chat-id: ${TELEGRAM_CHAT_ID:}
 
 logging:
   level:
