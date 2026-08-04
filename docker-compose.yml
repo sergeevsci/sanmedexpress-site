@@ -17,20 +17,21 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-sanmedexpress}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-sanmedexpress}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-change-me-db-password}
+
       ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me-admin-password}
+
       EMAIL_ENABLED: ${EMAIL_ENABLED:-false}
-      EMAIL_TO: ${EMAIL_TO:-sergeevsci@yandex.ru}
-      EMAIL_FROM: ${EMAIL_FROM:-no-reply@sanmedexpress.local}
+      EMAIL_TO: ${EMAIL_TO:-}
+      EMAIL_FROM: ${EMAIL_FROM:-}
+
       MAIL_HOST: ${MAIL_HOST:-localhost}
       MAIL_PORT: ${MAIL_PORT:-1025}
       MAIL_USERNAME: ${MAIL_USERNAME:-}
       MAIL_PASSWORD: ${MAIL_PASSWORD:-}
       MAIL_SMTP_AUTH: ${MAIL_SMTP_AUTH:-false}
       MAIL_SMTP_STARTTLS: ${MAIL_SMTP_STARTTLS:-false}
-      LOG_LEVEL_ROOT: ${LOG_LEVEL_ROOT:-INFO}
-      LOG_LEVEL_APP: ${LOG_LEVEL_APP:-INFO}
-      LOG_LEVEL_MAIL: ${LOG_LEVEL_MAIL:-INFO}
+      MAIL_SMTP_SSL_ENABLE: ${MAIL_SMTP_SSL_ENABLE:-false}
     depends_on:
       postgres:
         condition: service_healthy
