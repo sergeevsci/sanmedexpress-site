@@ -1,6 +1,8 @@
 package ru.sanmedexpress.service;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sanmedexpress.domain.Client;
@@ -12,6 +14,8 @@ import ru.sanmedexpress.web.CreateOrderRequest;
 
 @Service
 public class OrderService {
+    private static final Logger log = LoggerFactory.getLogger(OrderService.class);
+
     private final ClientRepository clientRepository;
     private final OrderRequestRepository orderRequestRepository;
     private final ReportEmailService reportEmailService;
@@ -36,6 +40,7 @@ public class OrderService {
 
         var order = new OrderRequest(client, cleanComment(request.comment()), getIp(servletRequest), servletRequest.getHeader("User-Agent"));
         var saved = orderRequestRepository.save(order);
+        log.info("Created order request id={} clientId={} phone={} source={} ip={}", saved.getId(), client.getId(), client.getPhone(), saved.getSource(), saved.getIpAddress());
         reportEmailService.sendNewOrder(saved);
         return saved;
     }
@@ -43,7 +48,9 @@ public class OrderService {
     @Transactional
     public void updateStatus(Long id, OrderStatus status) {
         var order = orderRequestRepository.findById(id).orElseThrow();
+        var oldStatus = order.getStatus();
         order.setStatus(status);
+        log.info("Updated order request id={} status {} -> {}", id, oldStatus, status);
     }
 
     private String normalizePhone(String phone) {

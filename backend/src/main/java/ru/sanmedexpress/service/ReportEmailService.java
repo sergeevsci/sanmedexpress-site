@@ -23,8 +23,11 @@ public class ReportEmailService {
 
     public void sendNewOrder(OrderRequest order) {
         if (!properties.enabled()) {
+            log.info("Email notification skipped for order id={} because EMAIL_ENABLED=false", order.getId());
             return;
         }
+
+        log.info("Sending email notification for order id={} to={} from={}", order.getId(), properties.to(), properties.from());
 
         var message = new SimpleMailMessage();
         message.setTo(properties.to());
@@ -36,8 +39,9 @@ public class ReportEmailService {
                 + "Дата: " + order.getCreatedAt());
         try {
             mailSender.send(message);
+            log.info("Email notification sent successfully for order id={} to={}", order.getId(), properties.to());
         } catch (MailException exception) {
-            log.warn("Cannot send order email", exception);
+            log.error("Email notification failed for order id={} to={} error={}", order.getId(), properties.to(), exception.getMessage(), exception);
         }
     }
 }

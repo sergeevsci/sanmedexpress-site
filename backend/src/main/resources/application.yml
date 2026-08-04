@@ -33,3 +33,11 @@ app:
     enabled: ${EMAIL_ENABLED:false}
     to: ${EMAIL_TO:sergeevsci@yandex.ru}
     from: ${EMAIL_FROM:no-reply@sanmedexpress.local}
+
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    ru.sanmedexpress: ${LOG_LEVEL_APP:INFO}
+    org.springframework.mail: ${LOG_LEVEL_MAIL:INFO}
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS,Europe/Moscow} %-5level [%thread] %logger{36} - %msg%n"
