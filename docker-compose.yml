@@ -14,7 +14,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      JAVA_TOOL_OPTIONS: "-Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false"
+      JAVA_TOOL_OPTIONS: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv6Addresses=false"
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-sanmedexpress}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-sanmedexpress}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-change-me-db-password}
