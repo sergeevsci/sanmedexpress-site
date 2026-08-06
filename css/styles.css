@@ -125,7 +125,7 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
 
 .service-card { height: 100%; overflow: hidden; border: 1px solid var(--color-line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
 .service-card:hover { transform: translateY(-5px); box-shadow: 0 28px 70px rgba(24, 63, 105, 0.18); }
-.service-card img { width: 100%; aspect-ratio: 1.35 / 1; object-fit: cover; background: var(--color-ice); }
+.service-card img { width: 100%; height: 220px; object-fit: cover; background: var(--color-ice); }
 .service-card div { padding: 22px; }
 .service-card p { color: var(--color-muted); }
 .link-button { padding: 0; border: 0; color: var(--color-accent); background: transparent; font-weight: 900; }
@@ -241,6 +241,7 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
   .hero-showcase { padding: 0 0 44px; }
   .hero-showcase img { width: 100%; height: 310px; }
   .hero-showcase-badge { left: 18px; right: auto; bottom: 14px; min-width: 150px; }
+  .service-card img { height: 240px; }
   .section-pad { padding: 58px 0; }
   .benefit-grid, .timeline { grid-template-columns: 1fr; }
   .price-row { grid-template-columns: 1fr; gap: 4px; padding: 18px; }
