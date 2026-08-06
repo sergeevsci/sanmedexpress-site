@@ -180,16 +180,13 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
 
 .contacts-section { background: linear-gradient(135deg, #f9fdff, var(--color-ice)); }
 .contact-card, .request-form { height: 100%; padding: 34px; border: 1px solid var(--color-line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
-.contact-phone { display: block; margin: 18px 0 4px; color: var(--color-accent); font-size: 34px; font-weight: 900; }
-.worktime { display: block; color: var(--color-muted); font-weight: 800; }
-.messenger-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.contact-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 560px; }
+.contact-card h2 { margin-bottom: 22px; }
+.contact-card p { color: var(--color-primary-dark); font-size: 19px; line-height: 1.75; }
+.contact-phone { display: block; margin: 44px 0 10px; color: var(--color-accent); font-size: clamp(36px, 3.5vw, 48px); line-height: 1.05; font-weight: 900; }
+.worktime { display: block; color: var(--color-muted); font-size: 18px; font-weight: 900; }
+.messenger-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 54px 0 0; }
 .messenger-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 16px; border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-primary-dark); background: var(--color-ice-2); font-weight: 900; }
-.contact-info-grid { display: grid; gap: 12px; margin-top: 28px; }
-.contact-info-grid div { padding: 18px 20px; border: 1px solid var(--color-line); border-radius: 20px; background: var(--color-ice-2); }
-.contact-info-grid b, .contact-info-grid span { display: block; }
-.contact-info-grid b { margin-bottom: 6px; color: var(--color-primary-dark); font-size: 18px; font-weight: 900; }
-.contact-info-grid span { color: var(--color-muted); }
-.contact-note { margin-top: 18px; padding: 18px 20px; border-radius: 20px; color: #fff; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); font-weight: 800; }
 .form-label { width: 100%; color: var(--color-primary-dark); font-weight: 900; }
 .form-control { min-height: 52px; border-color: var(--color-line); border-radius: 16px; }
 .form-control:focus { border-color: var(--color-accent); box-shadow: 0 0 0 .25rem rgba(223, 79, 100, .14); }
@@ -254,6 +251,10 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
   .fleet-section .patient-transfer-card figcaption { position: static; max-width: none; padding: 22px 24px 24px; border-radius: 0; background: #f8fafc; backdrop-filter: none; }
   .contact-phone { font-size: 28px; }
   .contact-card, .request-form { padding: 24px; }
+  .contact-card { display: block; min-height: 0; }
+  .contact-card p { font-size: 16px; line-height: 1.6; }
+  .contact-phone { margin-top: 24px; }
+  .messenger-links { margin-top: 24px; }
   .footer-grid { grid-template-columns: 1fr; }
   .mobile-call-bar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; border-radius: 999px; background: rgba(255,255,255,.96); box-shadow: var(--shadow); }
   .mobile-call-bar a, .mobile-call-bar button { display: inline-flex; justify-content: center; align-items: center; min-height: 46px; border: 0; border-radius: 999px; color: #fff; background: var(--color-accent); font-weight: 900; }
