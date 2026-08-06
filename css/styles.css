@@ -183,7 +183,7 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
 .contact-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 560px; }
 .contact-card h2 { margin-bottom: 22px; }
 .contact-card p { color: var(--color-primary-dark); font-size: 19px; line-height: 1.75; }
-.contact-phone { display: block; margin: 44px 0 10px; color: var(--color-accent); font-size: clamp(36px, 3.5vw, 48px); line-height: 1.05; font-weight: 900; }
+.contact-phone { display: block; margin: 44px 0 10px; color: var(--color-accent); font-size: clamp(32px, 2.7vw, 40px); line-height: 1.05; font-weight: 900; white-space: nowrap; }
 .worktime { display: block; color: var(--color-muted); font-size: 18px; font-weight: 900; }
 .messenger-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 54px 0 0; }
 .messenger-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 16px; border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-primary-dark); background: var(--color-ice-2); font-weight: 900; }
@@ -253,7 +253,7 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
   .contact-card, .request-form { padding: 24px; }
   .contact-card { display: block; min-height: 0; }
   .contact-card p { font-size: 16px; line-height: 1.6; }
-  .contact-phone { margin-top: 24px; }
+  .contact-phone { margin-top: 24px; white-space: normal; }
   .messenger-links { margin-top: 24px; }
   .footer-grid { grid-template-columns: 1fr; }
   .mobile-call-bar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; border-radius: 999px; background: rgba(255,255,255,.96); box-shadow: var(--shadow); }
