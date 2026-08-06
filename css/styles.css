@@ -178,17 +178,12 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
 .accordion-button:not(.collapsed) { color: var(--color-primary-dark); background: #fff; box-shadow: none; }
 .accordion-button:focus { box-shadow: 0 0 0 .25rem rgba(223, 79, 100, .18); }
 
-.review-placeholder { background: #fff; }
-.review-box { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 34px; border-radius: var(--radius); background: linear-gradient(135deg, #fff, var(--color-ice)); box-shadow: var(--shadow); }
-.review-box p { margin: 0; color: var(--color-muted); }
-
 .contacts-section { background: linear-gradient(135deg, #f9fdff, var(--color-ice)); }
 .contact-card, .request-form { height: 100%; padding: 34px; border: 1px solid var(--color-line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
 .contact-phone { display: block; margin: 18px 0 4px; color: var(--color-accent); font-size: 34px; font-weight: 900; }
 .worktime { display: block; color: var(--color-muted); font-weight: 800; }
 .messenger-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
 .messenger-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 16px; border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-primary-dark); background: var(--color-ice-2); font-weight: 900; }
-.map-placeholder { padding: 18px; border: 1px dashed rgba(39, 108, 174, 0.35); border-radius: 20px; color: var(--color-muted); background: #fafdff; }
 .form-label { width: 100%; color: var(--color-primary-dark); font-weight: 900; }
 .form-control { min-height: 52px; border-color: var(--color-line); border-radius: 16px; }
 .form-control:focus { border-color: var(--color-accent); box-shadow: 0 0 0 .25rem rgba(223, 79, 100, .14); }
@@ -251,8 +246,6 @@ h3 { color: var(--color-primary-dark); font-weight: 900; }
   .fleet-section .patient-transfer-card { margin-top: 24px; }
   .fleet-section .patient-transfer-card img { height: 260px !important; }
   .fleet-section .patient-transfer-card figcaption { position: static; max-width: none; padding: 22px 24px 24px; border-radius: 0; background: #f8fafc; backdrop-filter: none; }
-  .review-box { display: block; }
-  .review-box .btn { margin-top: 18px; width: 100%; }
   .contact-phone { font-size: 28px; }
   .contact-card, .request-form { padding: 24px; }
   .footer-grid { grid-template-columns: 1fr; }
